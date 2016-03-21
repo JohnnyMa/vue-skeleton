@@ -6,7 +6,8 @@
 
 <script>
 export default {                                                                                                        
-  data () {
+  data: function () {
+     // body...  
     return {
       // note: changing this line won't causes changes
       // with hot-reload because the reloaded component

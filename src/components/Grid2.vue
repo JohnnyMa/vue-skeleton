@@ -1,20 +1,9 @@
 <!-- component template -->
-<template id="demo-grid">
-	<!-- demo root element -->
-	<div id="demo">
-	  <form id="search">
-	    Search <input name="query" v-model="searchQuery">
-	  </form>
-	  <demo-grid
-	    :data="gridData"
-	    :columns="gridColumns"
-	    :filter-key="searchQuery">
-	  </demo-grid>
-	</div>
+<template id="grid-template">
   <table>
     <thead>
       <tr>
-        <th v-for="key in gridColumns"
+        <th v-for="key in columns"
           @click="sortBy(key)"
           :class="{active: sortKey == key}">
           {{key | capitalize}}
@@ -26,34 +15,40 @@
     </thead>
     <tbody>
       <tr v-for="
-        entry in gridData
+        entry in data
         | filterBy filterKey
         | orderBy sortKey sortOrders[sortKey]">
-        <td v-for="key in gridColumns">
+        <td v-for="key in columns">
           {{entry[key]}}
         </td>
       </tr>
     </tbody>
   </table>
 
-
+	<!-- demo root element -->
+	<div id="demo">
+	  <form id="search">
+	    Search <input name="query" v-model="searchQuery">
+	  </form>
+	  <demo-grid
+	    :data="gridData"
+	    :columns="gridColumns"
+	    :filter-key="searchQuery">
+	  </demo-grid>
+	</div>
 </template>
 
+
 <script>
-export default {
-  name: 'Grid',
+import Vue from './../../../build/lib/vue.js'
+
+export default Vue.extend({
+  template: '#grid-template',
   props: {
-    gridData: Array,
-    gridColumns: Array,
+    data: Array,
+    columns: Array,
     filterKey: String
   },
-  methods: {
-    sortBy: function (key) {
-      this.sortKey = key
-      this.sortOrders[key] = this.sortOrders[key] * -1
-    }
-  },
-
   data: function () {
     var sortOrders = {}
     this.columns.forEach(function (key) {
@@ -64,28 +59,15 @@ export default {
       sortOrders: sortOrders
     }
   },
-
-  data () {
-    return {
-	    searchQuery: 'jet',
-	    gridColumns: [],
-	    gridData: []
-	  }
-  },
-
-  created () {
-  	//init data
-  	this.gridColumns = ['name', 'power'];
-    this.gridData = [
-	      { name: 'Chuck Norris', power: Infinity },
-	      { name: 'Bruce Lee', power: 9000 },
-	      { name: 'Jackie Chan', power: 7000 },
-	      { name: 'Jet Li', power: 8000 },
-	      { name: 'Jet Liqqq', power: 8000 }
-	    ];
+  methods: {
+    sortBy: function (key) {
+      this.sortKey = key
+      this.sortOrders[key] = this.sortOrders[key] * -1
+    }
   }
-}
+})
 </script>
+
 
 <style lang="stylus">
 body {
