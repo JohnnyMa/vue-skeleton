@@ -3,6 +3,8 @@ import Router from 'vue-router'
 // import { domain, fromNow } from './filters'
 import App from './../src/components/App.vue'
 import Dashboard from './../src/components/Dashboard.vue'
+import Hello from './../src/components/Hello.vue'
+import Grid from './../src/components/Grid.vue'
 
 // install router
 Vue.use(Router)
@@ -38,6 +40,12 @@ var router = new Router()
 // Vue.extend(), or just a component options object.
 // We'll talk about nested routes later.
 router.map({
+  'hello': {
+    component: Hello
+  },
+  'grid': {
+    component: Grid
+  },
   'dashboard': {
     component: Dashboard
   },
