@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 // import { domain, fromNow } from './filters'
-//import App from './../src/components/App.vue'
+import App from './../src/components/App.vue'
 import Dashboard from './../src/components/Dashboard.vue'
 
 // install router
@@ -12,7 +12,7 @@ Vue.use(Router)
 // Vue.filter('domain', domain)
 
 
-var App = Vue.extend({})
+//var App = Vue.extend({})
 
 var Foo = Vue.extend({
   template: '<p>This is foo!</p>'
