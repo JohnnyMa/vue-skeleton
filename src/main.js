@@ -7,7 +7,7 @@ import Hello from './../src/components/Hello.vue'
 import Grid from './../src/components/Grid.vue'
 
 // install router
-Vue.use(Router)
+Vue.use(Router);
 
 // register filters globally
 // Vue.filter('fromNow', fromNow)
@@ -18,11 +18,15 @@ Vue.use(Router)
 
 var Foo = Vue.extend({
   template: '<p>This is foo!</p>'
-})
+});
 
 var Bar = Vue.extend({
   template: '<p>This is bar!</p>'
-})
+});
+
+var Bar2 = Vue.extend({
+  template: '<p>This is bar222!</p>'
+});
 
 // The router needs a root component to render.
 // For demo purposes, we will just use an empty one
@@ -32,7 +36,7 @@ var Bar = Vue.extend({
 // Create a router instance.
 // You can pass in additional options here, but let's
 // keep it simple for now.
-var router = new Router()
+var router = new Router();
 
 // Define some routes.
 // Each route should map to a component. The "component" can
@@ -54,10 +58,13 @@ router.map({
   },
   '/bar': {
     component: Bar
+  },
+  '/bar2': {
+    component: Bar2
   }
-})
+});
 
 // Now we can start the app!
 // The router will create an instance of App and mount to
 // the element matching the selector #app.
-router.start(App, '#app')
+router.start(App, '#app');
