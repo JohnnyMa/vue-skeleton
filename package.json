@@ -27,7 +27,8 @@
     "vue-html-loader": "^1.0.0",
     "vue-loader": "^8.2.1",
     "vue-style-loader": "^1.0.0",
-    "vue-boot": "^0.4.2",
+    "vueboot": "^0.4.2",
+    "vuetable": "^1.0.10",
     "webpack": "^1.12.2",
     "webpack-dev-server": "^1.12.0"
   }

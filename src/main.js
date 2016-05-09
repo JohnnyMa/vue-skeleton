@@ -5,9 +5,12 @@ import App from './../src/components/App.vue'
 import Dashboard from './../src/components/Dashboard.vue'
 import Hello from './../src/components/Hello.vue'
 import Grid from './../src/components/Grid.vue'
+import Todo from './../src/components/Todo.vue'
 
 // install router
 Vue.use(Router);
+
+Vue.config.debug = true;
 
 // register filters globally
 // Vue.filter('fromNow', fromNow)
@@ -61,6 +64,9 @@ router.map({
   },
   '/bar2': {
     component: Bar2
+  },
+  '/todo': {
+    component: Todo
   }
 });
 

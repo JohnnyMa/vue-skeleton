@@ -40,6 +40,8 @@
 </template>
 
 <script>
+import Vue from 'vue'
+
 export default {
   name: 'Grid',
   props: {
@@ -59,6 +61,9 @@ export default {
     this.columns.forEach(function (key) {
       sortOrders[key] = 1
     })
+
+    console.log(sortOrders);
+
     return {
       sortKey: '',
       sortOrders: sortOrders
@@ -85,6 +90,9 @@ export default {
 	    ];
   }
 }
+
+// Vue.component('demo-grid', Grid)
+
 </script>
 
 <style lang="stylus">
