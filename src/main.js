@@ -6,11 +6,30 @@ import Dashboard from './../src/components/Dashboard.vue'
 import Hello from './../src/components/Hello.vue'
 import Grid from './../src/components/Grid.vue'
 import Todo from './../src/components/Todo.vue'
+import VueTable from './../src/components/VueTable.vue'
 
 // install router
 Vue.use(Router);
 
 Vue.config.debug = true;
+
+
+var VueResource = require('vue-resource');
+Vue.use(VueResource);
+
+//
+// secondly, require or import Vuetable and optional VuetablePagination component
+//
+import Vuetable from 'vuetable';
+
+//
+// thirdly, register components to Vue
+//
+Vue.component('vuetable', Vuetable);
+// Vue.component('vuetable-pagination', VuetablePagination)
+// Vue.component('vuetable-pagination-dropdown', VuetablePaginationDropdown)
+// Vue.component('vuetable-pagination-bootstrap', VuetablePaginationBootstrap)
+
 
 // register filters globally
 // Vue.filter('fromNow', fromNow)
@@ -67,6 +86,9 @@ router.map({
   },
   '/todo': {
     component: Todo
+  },
+  '/vueTable': {
+    component: VueTable
   }
 });
 
