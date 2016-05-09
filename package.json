@@ -8,8 +8,9 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
+    "babel-runtime": "^5.8.0",
     "vue": "^1.0.0",
-    "babel-runtime": "^5.8.0"
+    "vueboot": "^0.4.2"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
@@ -26,6 +27,7 @@
     "vue-html-loader": "^1.0.0",
     "vue-loader": "^8.2.1",
     "vue-style-loader": "^1.0.0",
+    "vue-boot": "^0.4.2",
     "webpack": "^1.12.2",
     "webpack-dev-server": "^1.12.0"
   }
