@@ -14,6 +14,7 @@
 	    <!-- use router-view element as route outlet -->
 	    <div class="content">
 	    	<router-view></router-view>
+	    	
 	    </div>
 	  </div>
 </template>

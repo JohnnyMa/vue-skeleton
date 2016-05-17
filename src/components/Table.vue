@@ -1,75 +1,66 @@
-<template>
-	<table>
-      <thead>
-        <tr>
-          <th v-for="key in columns"
+<!-- component template -->
+<template type="text/x-template" id="grid-template">
+  <table>
+    <thead>
+      <tr>
+        <th v-for="key in columns"
           @click="sortBy(key)"
           :class="{active: sortKey == key}">
-            {{key | capitalize}}
-		    <span class="arrow"
-              :class="sortOrders[key] > 0 ? 'asc' : 'dsc'">
-            </span>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="
+          {{key | capitalize}}
+          <span class="arrow"
+            :class="sortOrders[key] > 0 ? 'asc' : 'dsc'">
+          </span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="
         entry in data
         | filterBy filterKey
         | orderBy sortKey sortOrders[sortKey]">
-          <td v-for="key in columns">
-            {{entry[key]}}
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <!-- demo root element 
-	<div id="demo">
-	  <form id="search">
-	    Search <input name="query" v-model="searchQuery">
-	  </form>
-	  <demo-grid
-	    :data="gridData"
-	    :columns="gridColumns"
-	    :filter-key="searchQuery">
-	  </demo-grid>
-	</div>-->
+        <td v-for="key in columns">
+          {{entry[key]}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </template>
 
 <script>
-	export default {
-		props: {
-		    data: Array,
-		    columns: Array,
-		    filterKey: String
-		},
-		data: function() {
-			return {
-				columns: ['name', 'power'],
-				data: [
-	              { name: 'Chuck Norris', power: Infinity },
-	              { name: 'Bruce Lee', power: 9000 },
-	              { name: 'Jackie Chan', power: 7000 },
-	              { name: 'Jet Li', power: 8000 }
-	            ],
-	            sortKey: '',
-      			sortOrders: {
-      				'name': 1,
-      				'power': 1
-      			}
-			};
-		},
-		methods: {
-		    sortBy: function (key) {
-		      this.sortKey = key
-		      this.sortOrders[key] = this.sortOrders[key] * -1
-		    }
-		  }
-	}
+import Vue from 'vue'
+  
+var grid = Vue.extend({
+  template: '#grid-template',
+  props: {
+    data: Array,
+    columns: Array,
+    filterKey: String
+  },
+  data: function () {
+    var sortOrders = {}
+    this.columns.forEach(function (key) {
+      sortOrders[key] = 1
+    })
+    return {
+      sortKey: '',
+      sortOrders: sortOrders
+    }
+  },
+  methods: {
+    sortBy: function (key) {
+      this.sortKey = key
+      this.sortOrders[key] = this.sortOrders[key] * -1
+    }
+  }
+})
+
+// register the grid component
+Vue.component('demo-grid', grid)
+
+export default grid
 </script>
 
-<style>
+<style scoped>
 body {
   font-family: Helvetica Neue, Arial, sans-serif;
   font-size: 14px;
