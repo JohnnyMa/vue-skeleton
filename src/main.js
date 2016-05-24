@@ -7,7 +7,7 @@ import VueResource from 'vue-resource'
 import App from './../src/components/App.vue'
 import Dashboard from './../src/components/Dashboard.vue'
 import Hello from './../src/components/Hello.vue'
-import Grid from './../src/components/Table.vue'
+import Grid from './../src/components/GridSample.vue'
 import Todo from './../src/components/Todo.vue'
 import VueTable from './../src/components/VueTable.vue'
 
@@ -37,20 +37,7 @@ Vue.use(VueResource);
 
 
 
-// bootstrap the demo
-var demoGrid = new Vue({
-  el: '#demo',
-  data: {
-    searchQuery: '',
-    gridColumns: ['name', 'power'],
-    gridData: [
-      { name: 'Chuck Norris', power: Infinity },
-      { name: 'Bruce Lee', power: 9000 },
-      { name: 'Jackie Chan', power: 7000 },
-      { name: 'Jet Li', power: 8000 }
-    ]
-  }
-});
+
 
 
 
@@ -86,7 +73,7 @@ router.map({
     component: Hello
   },
   'grid': {
-    component: demoGrid
+    component: Grid
   },
   'dashboard': {
     component: Dashboard
