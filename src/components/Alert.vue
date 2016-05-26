@@ -1,11 +1,11 @@
 <template>
   <div class="hello">
-    <h1>Dashboard</h1>
+    <h1>Alert</h1>
     <input v-model="msg">
   </div>
 
   <section>
-    <span>Audit Message is: {{ message }}</span>
+    <span>Alert Message is: {{ message }}</span>
     <input type="text" v-model="message" placeholder="edit me">
   </section>
 </template>
@@ -25,3 +25,5 @@ export default {
   }
 }
 </script>
+
+

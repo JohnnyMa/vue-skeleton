@@ -3,10 +3,12 @@ import Router from 'vue-router'
 // import { domain, fromNow } from './filters'
 import App from './../src/components/App.vue'
 import Dashboard from './../src/components/Dashboard.vue'
-import Hello from './../src/components/Hello.vue'
-import Grid from './../src/components/Grid.vue'
+import Alert from './../src/components/Alert.vue'
+import Audit from './../src/components/Audit.vue'
+// import Hello from './../src/components/Hello.vue'
+// import Grid from './../src/components/Grid.vue'
 import Todo from './../src/components/Todo.vue'
-import VueTable from './../src/components/VueTable.vue'
+// import VueTable from './../src/components/VueTable.vue'
 
 // install router
 Vue.use(Router);
@@ -20,12 +22,12 @@ Vue.use(VueResource);
 //
 // secondly, require or import Vuetable and optional VuetablePagination component
 //
-import Vuetable from 'vuetable';
+// import Vuetable from 'vuetable';
 
 //
 // thirdly, register components to Vue
 //
-Vue.component('vuetable', Vuetable);
+// Vue.component('vuetable', Vuetable);
 // Vue.component('vuetable-pagination', VuetablePagination)
 // Vue.component('vuetable-pagination-dropdown', VuetablePaginationDropdown)
 // Vue.component('vuetable-pagination-bootstrap', VuetablePaginationBootstrap)
@@ -38,17 +40,14 @@ Vue.component('vuetable', Vuetable);
 
 //var App = Vue.extend({})
 
-var Foo = Vue.extend({
-  template: '<p>This is foo!</p>'
-});
+// var Foo = Vue.extend({
+//   template: '<p>This is foo!</p>'
+// });
 
-var Bar = Vue.extend({
-  template: '<p>This is bar!</p>'
-});
+// var Bar = Vue.extend({
+//   template: '<p>This is bar!</p>'
+// });
 
-var Bar2 = Vue.extend({
-  template: '<p>This is bar222!</p>'
-});
 
 // The router needs a root component to render.
 // For demo purposes, we will just use an empty one
@@ -66,30 +65,32 @@ var router = new Router();
 // Vue.extend(), or just a component options object.
 // We'll talk about nested routes later.
 router.map({
-  'hello': {
-    component: Hello
-  },
-  'grid': {
-    component: Grid
-  },
+  // 'hello': {
+  //   component: Hello
+  // },
+  // 'grid': {
+  //   component: Grid
+  // },
   'dashboard': {
     component: Dashboard
   },
-  '/foo': {
-    component: Foo
+  '/alert': {
+    component: Alert
   },
-  '/bar': {
-    component: Bar
-  },
-  '/bar2': {
-    component: Bar2
-  },
+  '/audit': {
+    component: Audit
+  }
+  // ,
+  // '/bar2': {
+  //   component: Bar2
+  // }
+  ,
   '/todo': {
     component: Todo
   },
-  '/vueTable': {
-    component: VueTable
-  }
+  // '/vueTable': {
+  //   component: VueTable
+  // }
 });
 
 // Now we can start the app!
