@@ -12,9 +12,7 @@
 <script>
 	import Vue from 'vue'
 
-	export default {
-		data: function () {
-			 return new Vue({
+	var obj = new Vue({
 				  el: '#id-todo',
 				  data: {
 				    newTodo: '',
@@ -35,6 +33,10 @@
 				    }
 				  }
 				});
+
+	export default {
+		data: function() {
+			return obj
 		}
 	}
 </script>

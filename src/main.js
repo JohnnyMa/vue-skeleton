@@ -1,17 +1,26 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
+import Vuetable from './../src/components/Vuetable.vue'
+import VuetablePagination from './../src/components/VuetablePagination.vue'
+import VuetablePaginationDropdown from './../src/components/VuetablePaginationDropdown.vue'
+import VuetablePaginationBootstrap from './../src/components/VuetablePaginationBootstrap.vue'
 // import { domain, fromNow } from './filters'
 import App from './../src/components/App.vue'
 import Dashboard from './../src/components/Dashboard.vue'
 import Hello from './../src/components/Hello.vue'
 import Grid from './../src/components/Grid.vue'
 import Todo from './../src/components/Todo.vue'
-import VueTable from './../src/components/VueTable.vue'
+import VueTableSample from './../src/components/VueTableSample.vue'
 
 // install router
 Vue.use(Router);
 
 Vue.config.debug = true;
+
+//enable vue-debug plugin
+// var vueDebug = require('vue-debug')
+// Vue.use(vueDebug)
 
 
 var VueResource = require('vue-resource');
@@ -20,15 +29,15 @@ Vue.use(VueResource);
 //
 // secondly, require or import Vuetable and optional VuetablePagination component
 //
-import Vuetable from 'vuetable';
+// import Vuetable from 'vuetable';
 
 //
 // thirdly, register components to Vue
 //
 Vue.component('vuetable', Vuetable);
-// Vue.component('vuetable-pagination', VuetablePagination)
-// Vue.component('vuetable-pagination-dropdown', VuetablePaginationDropdown)
-// Vue.component('vuetable-pagination-bootstrap', VuetablePaginationBootstrap)
+Vue.component('vuetable-pagination', VuetablePagination)
+Vue.component('vuetable-pagination-dropdown', VuetablePaginationDropdown)
+Vue.component('vuetable-pagination-bootstrap', VuetablePaginationBootstrap)
 
 
 // register filters globally
@@ -88,7 +97,7 @@ router.map({
     component: Todo
   },
   '/vueTable': {
-    component: VueTable
+    component: VueTableSample
   }
 });
 
