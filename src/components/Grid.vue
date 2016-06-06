@@ -11,7 +11,7 @@
 	    :filter-key="searchQuery">
 	  </demo-grid>
 	</div>
-  <table>
+  <table class="demo-tbl">
     <thead>
       <tr>
         <th v-for="key in gridColumns"
@@ -40,6 +40,8 @@
 </template>
 
 <script>
+import Vue from 'vue'
+
 export default {
   name: 'Grid',
   props: {
@@ -59,6 +61,9 @@ export default {
     this.columns.forEach(function (key) {
       sortOrders[key] = 1
     })
+
+    console.log(sortOrders);
+
     return {
       sortKey: '',
       sortOrders: sortOrders
@@ -85,6 +90,9 @@ export default {
 	    ];
   }
 }
+
+// Vue.component('demo-grid', Grid)
+
 </script>
 
 <style lang="stylus">
@@ -94,13 +102,13 @@ body {
   color: #444;
 }
 
-table {
+table.demo-tbl {
   border: 2px solid #42b983;
   border-radius: 3px;
   background-color: #fff;
 }
 
-th {
+table.demo-tbl th {
   background-color: #42b983;
   color: rgba(255,255,255,0.66);
   cursor: pointer;
@@ -109,24 +117,24 @@ th {
   -user-select: none;
 }
 
-td {
+table.demo-tbl td {
   background-color: #f9f9f9;
 }
 
-th, td {
+table.demo-tbl th,table.demo-tbl  td {
   min-width: 120px;
   padding: 10px 20px;
 }
 
-th.active {
+table.demo-tbl th.active {
   color: #fff;
 }
 
-th.active .arrow {
+table.demo-tbl th.active .arrow {
   opacity: 1;
 }
 
-.arrow {
+table.demo-tbl .arrow {
   display: inline-block;
   vertical-align: middle;
   width: 0;
@@ -135,13 +143,13 @@ th.active .arrow {
   opacity: 0.66;
 }
 
-.arrow.asc {
+table.demo-tbl .arrow.asc {
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
   border-bottom: 4px solid #fff;
 }
 
-.arrow.dsc {
+table.demo-tbl .arrow.dsc {
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
   border-top: 4px solid #fff;

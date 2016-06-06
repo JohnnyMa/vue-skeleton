@@ -40,7 +40,7 @@
 
 
 <script>
-import Vue from './../../../build/lib/vue.js'
+import Vue from 'vue'
 
 export default Vue.extend({
   template: '#grid-template',

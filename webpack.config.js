@@ -1,15 +1,17 @@
+var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
   entry: './src/main.js',
   output: {
-    path: './build',
+    path: path.resolve(__dirname, './build'),
     publicPath: '/build/',
     filename: 'build.js'
   },
+  resolveLoader: {
+    root: path.join(__dirname, 'node_modules'),
+  },
   module: {
-    // avoid webpack trying to shim process
-    noParse: /es6-promise\.js$/,
     loaders: [
       {
         test: /\.vue$/,
@@ -17,21 +19,38 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        // excluding some local linked packages.
-        // for normal use cases only node_modules is needed.
-        exclude: /node_modules|vue\/dist|vue-router\/|vue-loader\/|vue-hot-reload-api\//,
-        loader: 'babel'
+        loader: 'babel',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.json$/,
+        loader: 'json'
+      },
+      {
+        test: /\.html$/,
+        loader: 'vue-html'
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        loader: 'url',
+        query: {
+          limit: 10000,
+          name: '[name].[ext]?[hash]'
+        }
       }
     ]
   },
-  babel: {
-    presets: ['es2015'],
-    plugins: ['transform-runtime']
-  }
+  devServer: {
+    historyApiFallback: true,
+    noInfo: true
+  },
+  devtool: '#eval-source-map'
 }
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports.plugins = [
+  module.exports.devtool = '#source-map'
+  // http://vuejs.github.io/vue-loader/workflow/production.html
+  module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"production"'
@@ -43,7 +62,5 @@ if (process.env.NODE_ENV === 'production') {
       }
     }),
     new webpack.optimize.OccurenceOrderPlugin()
-  ]
-} else {
-  module.exports.devtool = '#source-map'
+  ])
 }
